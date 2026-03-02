@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flutter-Like Mobile IDE + IA</title>
+    <style>
+        :root { --primary: #007bff; --dark: #1e1e1e; --text: #ffffff; }
+        body { margin: 0; font-family: sans-serif; background: var(--dark); color: var(--text); display: flex; flex-direction: column; height: 100vh; }
+        
+        /* Header Profissional */
+        header { background: #111; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--primary); }
+        
+        /* Área do Editor (Flutter-like) */
+        #editor-container { flex: 1; padding: 10px; display: flex; flex-direction: column; }
+        textarea { width: 100%; flex: 1; background: #252526; color: #d4d4d4; border: 1px solid #333; border-radius: 8px; padding: 10px; font-family: monospace; resize: none; }
+
+        /* Chat IA Integrado */
+        #chat-ia { height: 150px; background: #2d2d2d; border-top: 1px solid var(--primary); padding: 10px; overflow-y: auto; font-size: 0.9em; }
+        .ia-input { display: flex; gap: 5px; padding: 5px; background: #111; }
+        input { flex: 1; background: #333; border: none; color: white; padding: 8px; border-radius: 5px; }
+
+        /* Sistema de APK e Instalação */
+        .actions { display: flex; flex-wrap: wrap; gap: 10px; padding: 15px; background: #111; justify-content: center; }
+        button { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        button.apk { background: #28a745; }
+        
+        #status-build { font-size: 0.8em; color: #aaa; text-align: center; padding-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <span><strong>IDE Mobile Professional</strong></span>
+    <button onclick="compilar()">Executar App</button>
+</header>
+
+<div id="editor-container">
+    <small>Editor (Dart / Flutter / JS):</small>
+    <textarea id="codeEditor" placeholder="// Comece seu código Flutter aqui..."></textarea>
+</div>
+
+<div id="chat-ia" id="iaDisplay">
+    <div style="color:var(--primary)">[IA]: Olá! Sou sua IA de desenvolvimento. O que vamos criar hoje?</div>
+</div>
+<div class="ia-input">
+    <input type="text" id="userMsg" placeholder="Peça um código ou tire uma dúvida...">
+    <button onclick="perguntarIA()">Enviar</button>
+</div>
+
+<div class="actions">
+    <button class="apk" onclick="gerarAPK()">Gerar APK</button>
+    <button onclick="instalar()">Instalar App</button>
+    <button onclick="atualizar()">Verificar Atualização</button>
+</div>
+<div id="status-build">Pronto para desenvolvimento (Sem PC)</div>
+
+<script>
+    function perguntarIA() {
+        const msg = document.getElementById('userMsg').value;
+        const display = document.getElementById('chat-ia');
+        display.innerHTML += `<div><strong>Você:</strong> ${msg}</div>`;
+        display.innerHTML += `<div style="color:var(--primary)"><strong>IA:</strong> Gerando código para ${msg}... (Simulação de nível profissional)</div>`;
+        document.getElementById('userMsg').value = '';
+        display.scrollTop = display.scrollHeight;
+    }
+
+    function gerarAPK() {
+        alert("Iniciando Conversor de Projeto em APK...\n- Compilando arquivos nativos\n- Assinando APK\n- Gerando link de download.");
+        document.getElementById('status-build').innerText = "APK Gerado com Sucesso!";
+    }
+
+    function instalar() {
+        alert("Guia de Instalação:\n1. Clique em Baixar\n2. Ative 'Fontes Desconhecidas' no seu Android\n3. Siga o instalador nativo.");
+    }
+    
+    function compilar() {
+        alert("Renderizando visual Flutter-like...");
+    }
+
+    function atualizar() {
+        alert("Sistema de atualização: Versão 1.0.0 estável.");
+    }
+</script>
+
+</body>
+</html>
